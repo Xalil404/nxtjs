@@ -1,5 +1,4 @@
 // components/Header.js
-"use client";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "next/link";

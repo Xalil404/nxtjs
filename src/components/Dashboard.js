@@ -13,26 +13,32 @@ const Dashboard = () => {
     const router = useRouter(); // Use Next.js router for navigation
     const [userProfile, setUserProfile] = useState(null); // State to store user profile
     const [error, setError] = useState(null); // To store any error messages
-    const token = localStorage.getItem('authToken'); // Retrieve token from local storage
+  //  const token = localStorage.getItem('authToken'); // Retrieve token from local storage
+    const [token, setToken] = useState(null);
 
     // Load user profile when the component mounts
     useEffect(() => {
-        const loadProfile = async () => {
-            try {
-                const profileData = await fetchUserProfile(token);
-                setUserProfile(profileData); // Set user profile
-            } catch (err) {
-                setError(err.detail || 'Error fetching user profile');
-                console.error('Error fetching user profile:', err);
-            }
-        };
+        if (typeof window !== 'undefined') {
+            // Only access localStorage on the client-side
+            const authToken = localStorage.getItem('authToken');
+            setToken(authToken); // Set token after ensuring it's client-side
 
-        if (token) {
-            loadProfile(); // Call the fetch function when component mounts
-        } else {
-            setError('No authentication token found');
+            if (authToken) {
+                const loadProfile = async () => {
+                    try {
+                        const profileData = await fetchUserProfile(authToken);
+                        setUserProfile(profileData); // Set user profile
+                    } catch (err) {
+                        setError(err.detail || 'Error fetching user profile');
+                        console.error('Error fetching user profile:', err);
+                    }
+                };
+                loadProfile(); // Call the fetch function if token exists
+            } else {
+                setError('No authentication token found');
+            }
         }
-    }, [token]); // Dependencies: token
+    }, []);
 
     const handleLogout = () => {
         // Clear auth token and redirect to home
