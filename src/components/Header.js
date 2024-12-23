@@ -44,7 +44,7 @@ const Header = ({ isAuthenticated }) => {
           <div className="d-flex order-2 order-lg-3 align-items-center gap-3">
             {!isAuthenticated && (
               <>
-                <Link className="nav-link-a d-none d-lg-block text-dark" href="/login">
+                <Link className="nav-link-a d-none d-lg-block text-dark" href="/login" style={{ textDecoration: 'none' }}>
                   Sign in
                 </Link>
 
