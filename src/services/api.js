@@ -65,28 +65,6 @@ export const fetchUserProfile = async () => {
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Function to fetch tasks
 export const fetchTasks = async () => {
     try {
@@ -127,6 +105,40 @@ export const deleteTask = async (taskId) => {
         return response.data; // Optionally return a success message or response
     } catch (error) {
         console.error('Error deleting task:', error);
+        throw error.response ? error.response.data : error.message; // Handle the error response
+    }
+};
+
+
+// Function to fetch the user's profile
+export const fetchProfile = async () => {
+    try {
+        const response = await api.get('/profile/'); // Use the pre-configured Axios instance
+        return response.data; // Returns the profile data
+    } catch (error) {
+        console.error('Error fetching profile:', error);
+        throw error.response ? error.response.data : error.message; // Handle the error response
+    }
+};
+
+// Function to update the user's profile
+export const updateProfile = async (profileData) => {
+    try {
+        const response = await api.put('/profile/', profileData); // Use the pre-configured Axios instance
+        return response.data; // Returns the updated profile data
+    } catch (error) {
+        console.error('Error updating profile:', error);
+        throw error.response ? error.response.data : error.message; // Handle the error response
+    }
+};
+
+// Function to delete the user's profile
+export const deleteProfile = async () => {
+    try {
+        const response = await api.delete('/profile/'); // Use the pre-configured Axios instance
+        return response.data; // Optionally return a success message or confirmation
+    } catch (error) {
+        console.error('Error deleting profile:', error);
         throw error.response ? error.response.data : error.message; // Handle the error response
     }
 };
