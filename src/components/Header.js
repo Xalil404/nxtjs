@@ -1,6 +1,7 @@
 // components/Header.js
-import 'bootstrap/dist/css/bootstrap.min.css';
+"use client";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react"; // Import useState and useEffect
