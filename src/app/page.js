@@ -1,10 +1,25 @@
+"use client";
+
 import Header from "../components/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Link from 'next/link';
 import styles from "./page.module.css";
+import { useEffect, useState } from "react"; // Import useState and useEffect to handle client-side logic
+
+
 
 
 export default function Home() {
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check for the authToken in localStorage once the component mounts
+    const authToken = localStorage.getItem('authToken');
+    setIsAuthenticated(!!authToken); // If authToken exists, the user is authenticated
+  }, []);
+  
+
   return (
     <div className={styles.page}>
       {/* Render the Header component */}

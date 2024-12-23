@@ -3,8 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react"; // Import useState and useEffect
 
-const Header = ({ isAuthenticated }) => {
+const Header = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check for the authToken in localStorage once the component mounts
+    const authToken = localStorage.getItem('authToken');
+    setIsAuthenticated(!!authToken); // If authToken exists, the user is authenticated
+  }, []);
+  
   return (
     <div className="navcolor">
       <nav className="navbar navbar-expand-lg navbar-light py-3 sticky-top">
@@ -26,12 +35,12 @@ const Header = ({ isAuthenticated }) => {
               {isAuthenticated && (
                 <>
                   <li className="nav-item mx-2">
-                    <Link className="nav-link-nav active text-dark" href="/dashboard">
+                    <Link className="nav-link-nav active text-dark" href="/dashboard" style={{ textDecoration: 'none'}}>
                       Dashboard
                     </Link>
                   </li>
                   <li className="nav-item mx-2">
-                    <Link className="nav-link-nav active text-dark" href="/logout">
+                    <Link className="nav-link-nav active text-dark" href="/logout" style={{ textDecoration: 'none'}}>
                       Logout
                     </Link>
                   </li>

@@ -1,4 +1,18 @@
+# Next JS Frontend Template!
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+This project is a ready front-end project template in NextJS with a basic REST Api to work with a backend application that already has user authentication ready to go.
+
+Link to live site [here](https://nxtjs-chi.vercel.app/).
+
+<p align="center">
+<img src="https://res.cloudinary.com/dnbbm9vzi/image/upload/v1734965133/Screenshot_2024-12-23_at_2.45.02_PM_piyxhx.png" width="auto" height="auto" alt="image of the React template website home page"></p>
+
+## Platform features
+* Frontend in NextJS.
+* API Documentation in Swagger & Redoc.
+* Two models (Profile & CRUD) which are reusable in any project.
 
 ## Getting Started
 
