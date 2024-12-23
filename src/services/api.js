@@ -63,3 +63,70 @@ export const fetchUserProfile = async () => {
         throw error.response ? error.response.data : error.message; // Provide error details
     }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Function to fetch tasks
+export const fetchTasks = async () => {
+    try {
+        const response = await api.get('/tasks/'); // Use the pre-configured Axios instance
+        return response.data; // Returns the list of tasks
+    } catch (error) {
+        console.error('Error fetching tasks:', error);
+        throw error.response ? error.response.data : error.message; // Handle the error response
+    }
+};
+
+// Function to create a new task
+export const createTask = async (taskData) => {
+    try {
+        const response = await api.post('/tasks/', taskData); // Use the pre-configured Axios instance
+        return response.data; // Returns the created task data
+    } catch (error) {
+        console.error('Error creating task:', error);
+        throw error.response ? error.response.data : error.message; // Handle the error response
+    }
+};
+
+// Function to update a task
+export const updateTask = async (taskId, taskData) => {
+    try {
+        const response = await api.put(`/tasks/${taskId}/`, taskData); // Use the pre-configured Axios instance
+        return response.data; // Returns the updated task data
+    } catch (error) {
+        console.error('Error updating task:', error);
+        throw error.response ? error.response.data : error.message; // Handle the error response
+    }
+};
+
+// Function to delete a task
+export const deleteTask = async (taskId) => {
+    try {
+        const response = await api.delete(`/tasks/${taskId}/`); // Use the pre-configured Axios instance
+        return response.data; // Optionally return a success message or response
+    } catch (error) {
+        console.error('Error deleting task:', error);
+        throw error.response ? error.response.data : error.message; // Handle the error response
+    }
+};
